@@ -6,16 +6,16 @@ from webots_ros.srv import set_float
 
 rospy.init_node('test', anonymous=True)
 
-robot_name = rospy.wait_for_message('/model_name', String).data
+#robot_name = rospy.wait_for_message('/model_name', String).data
+robot_name="beep_beep"
 
-
-head_yaw_vel_srv = '/' + robot_name + '/head_yaw/set_velocity'
+head_yaw_srv = '/' + robot_name + '/head_yaw/set_position'
  
-rospy.wait_for_service(head_yaw_vel_srv)
+rospy.wait_for_service(head_yaw_srv)
 
 try:
-    head_rot_set_vel = rospy.ServiceProxy(head_yaw_vel_srv, set_float)
-    res = head_rot_set_vel(4.0)
+    head_rot = rospy.ServiceProxy(head_yaw_srv, set_float)
+    res = head_rot(0.5)
     print(res)
 
 except rospy.ServiceException as e:
