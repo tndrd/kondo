@@ -62,7 +62,7 @@ def registerServoDict(ctrl_set = None):
 	return servo_dict, ctrl_set
 
 
-def sendCommandsAsync(servo_dict, name_list, val_list):
+async def sendCommandsAsync(servo_dict, name_list, val_list):
 	
 	assert len(name_list) == len(val_list)
 	
@@ -92,7 +92,7 @@ def sendCommandsAsync(servo_dict, name_list, val_list):
 	#ioloop.run_until_complete(wait_tasks)
 	#ioloop.close() 
 	
-	asyncio.gather(*tasks)
+	await asyncio.gather(*tasks)
 	
 			
 def sendCommandsSync(servo_dict, name_list, val_list):
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 	
 	def servosCallback(msg):
 		print("Recieved: ", msg.names, msg.values)
-		sendCommandsAsync(servo_dict, msg.names, msg.values)
+		asyncio.run(sendCommandsAsync(servo_dict, msg.names, msg.values))
 	
 	print("Listening to commands...")
 	
