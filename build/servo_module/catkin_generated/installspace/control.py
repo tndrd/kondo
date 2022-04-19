@@ -12,8 +12,6 @@ from servo_module.msg import servos
 ROBOT_NAME = "beep_beep"
 #robot_name = rospy.wait_for_message('/model_name', String).data
 
-rospy.init_node('test', anonymous=True)
-
 def getSrvList():
 	srv_list = rosservice.get_service_list()
 	return srv_list
@@ -101,20 +99,43 @@ def sendCommandsSync(servo_dict, name_list, val_list):
 
 
 if __name__ == "__main__":
+	rospy.init_node('test', anonymous=True)
+
 	servo_dict, ctrl_set = registerServoDict()
+	
+	def servosCallback(msg):
+		print("Recieved: ", msg.names, msg.values)
+		sendCommandsAsync(servo_dict, msg.names, msg.values)
+	
+	print("Listening to commands...")
+	
+	rospy.Subscriber("servo_cmds", servos, servosCallback)
+    
+	rospy.spin()
 
-	name_list = list(ctrl_set)
-	val_list  = [1 for name in name_list]
 
-	print("Async call:")
-	start = time()
-	sendCommandsAsync(servo_dict, name_list, val_list)
-	elapsed = time() - start
-	print("Done in %s s" % elapsed)
 
-	print("Sync call:")
-	start = time()
-	sendCommandsSync(servo_dict, name_list, val_list)
-	elapsed = time() - start
-	print("Done in %s s" % elapsed)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	

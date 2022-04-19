@@ -104,7 +104,10 @@ if __name__ == "__main__":
 	servo_dict, ctrl_set = registerServoDict()
 	
 	def servosCallback(msg):
+		print("Recieved: ", msg.names, msg.values)
 		sendCommandsAsync(servo_dict, msg.names, msg.values)
+	
+	print("Listening to commands...")
 	
 	rospy.Subscriber("servo_cmds", servos, servosCallback)
     
