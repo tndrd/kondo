@@ -67,27 +67,33 @@ def sendCommandsAsync(servo_dict, name_list, val_list):
 	assert len(name_list) == len(val_list)
 	
 	async def exec_cmd(name, val):
-		await rospy.wait_for_service(ctrl2srv(name))
-		await servo_dict[name](val) 
+		srv_name = ctrl2srv(name)
+		print("Trying to call service %s" % srv_name)
+		await rospy.wait_for_service(srv_name)
+		res = await servo_dict[name](val) 
+		print(res)
 		
-	ioloop = asyncio.new_event_loop()
-	asyncio.set_event_loop(ioloop)
+	#ioloop = asyncio.new_event_loop()
+	#asyncio.set_event_loop(ioloop)
+	#ioloop = asyncio.get_event_loop()
+	
 	tasks = []
 	
 	for name, val in zip(name_list, val_list):	
 		if name not in servo_dict:
 			print("Wrong command: servo %s is not available" % name)
 			continue
-		print("added task")
-		task = ioloop.create_task(exec_cmd(name, val))
+		
+		#task = ioloop.create_task(exec_cmd(name, val))
+		task = exec_cmd(*(name, val))
 		tasks.append(task)
 	
-	wait_tasks = asyncio.wait(tasks)
-	ioloop.run_until_complete(wait_tasks)
-	ioloop.close() 
+	#wait_tasks = asyncio.wait(tasks)
+	#ioloop.run_until_complete(wait_tasks)
+	#ioloop.close() 
 	
-	#print("Done!")
-
+	asyncio.gather(*tasks)
+	
 			
 def sendCommandsSync(servo_dict, name_list, val_list):
 	

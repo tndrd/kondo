@@ -67,8 +67,11 @@ def sendCommandsAsync(servo_dict, name_list, val_list):
 	assert len(name_list) == len(val_list)
 	
 	async def exec_cmd(name, val):
+		print("here")
 		await rospy.wait_for_service(ctrl2srv(name))
-		await servo_dict[name](val) 
+		print("here2")
+		res = await servo_dict[name](val) 
+		print(res)
 		
 	ioloop = asyncio.new_event_loop()
 	asyncio.set_event_loop(ioloop)
@@ -78,6 +81,7 @@ def sendCommandsAsync(servo_dict, name_list, val_list):
 		if name not in servo_dict:
 			print("Wrong command: servo %s is not available" % name)
 			continue
+		
 		task = ioloop.create_task(exec_cmd(name, val))
 		tasks.append(task)
 	
