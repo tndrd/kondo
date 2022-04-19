@@ -131,7 +131,9 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/tndrd/workspaces/kondo/build/gtest/cmake_install.cmake")
+  include("/home/tndrd/workspaces/kondo/build/testpkg/cmake_install.cmake")
   include("/home/tndrd/workspaces/kondo/build/mytest/cmake_install.cmake")
+  include("/home/tndrd/workspaces/kondo/build/servo-module/cmake_install.cmake")
 
 endif()
 

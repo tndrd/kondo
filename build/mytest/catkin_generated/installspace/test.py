@@ -1,26 +1,24 @@
 #!/usr/bin/env python3
 
 import rospy
-from std_msgs.msg import Float64
+from std_msgs.msg   import Float64, String
+from webots_ros.srv import set_float
 
-import controller
-print(dir(controller))
+rospy.init_node('test', anonymous=True)
 
-from controller import Robot
+#robot_name = rospy.wait_for_message('/model_name', String).data
+robot_name="beep_beep"
 
+head_yaw_srv = '/' + robot_name + '/head_yaw/set_position'
+ 
+rospy.wait_for_service(head_yaw_srv)
 
-print("hehe")
+try:
+    head_rot = rospy.ServiceProxy(head_yaw_srv, set_float)
+    res = head_rot(0.5)
+    print(res)
 
-robot = Robot()
-timeStep = int(robot.getBasicTimeStep())
+except rospy.ServiceException as e:
+    print("Service call failed: %s"%e)
 
-head_yaw = robot.getDevice('head_yaw')
-
-head_yaw.setPosition(float('inf'))
-
-velocity = 1
-
-head_yaw.setVelocity(velocity)
-
-while robot.step(timeStep) != -1 and not rospy.is_shutdown():
-    rospy.spinOnce()
+rospy.spin()
