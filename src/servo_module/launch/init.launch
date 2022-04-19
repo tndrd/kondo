@@ -9,5 +9,4 @@
   </include>
 
   <arg name="auto_close" default="false" doc="Startup mode"/>
-  <node name="servo_control" pkg="servo_module" type="control.py" required="$(arg auto_close)" output="screen"/>
 </launch>

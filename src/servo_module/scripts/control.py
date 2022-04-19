@@ -70,13 +70,15 @@ def sendCommandsAsync(servo_dict, name_list, val_list):
 		await rospy.wait_for_service(ctrl2srv(name))
 		await servo_dict[name](val) 
 		
-	ioloop = asyncio.get_event_loop()
+	ioloop = asyncio.new_event_loop()
+	asyncio.set_event_loop(ioloop)
 	tasks = []
 	
 	for name, val in zip(name_list, val_list):	
 		if name not in servo_dict:
 			print("Wrong command: servo %s is not available" % name)
 			continue
+		print("added task")
 		task = ioloop.create_task(exec_cmd(name, val))
 		tasks.append(task)
 	
