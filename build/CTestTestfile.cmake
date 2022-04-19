@@ -7,4 +7,4 @@
 subdirs("gtest")
 subdirs("testpkg")
 subdirs("mytest")
-subdirs("servo-module")
+subdirs("servo_module")

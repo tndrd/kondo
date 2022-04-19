@@ -564,10 +564,10 @@ rostime_DIR:PATH=/opt/ros/noetic/share/rostime/cmake
 sensor_msgs_DIR:PATH=/opt/ros/noetic/share/sensor_msgs/cmake
 
 //Value Computed by CMake
-servo-module_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/servo-module
+servo_module_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/servo_module
 
 //Value Computed by CMake
-servo-module_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/servo-module
+servo_module_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/servo_module
 
 //The directory containing a CMake configuration file for shape_msgs.
 shape_msgs_DIR:PATH=/opt/ros/noetic/share/shape_msgs/cmake

@@ -1,0 +1,8 @@
+prefix=/home/tndrd/workspaces/kondo/devel
+
+Name: servo_module
+Description: Description of servo_module
+Version: 1.0.0
+Cflags: -I/home/tndrd/workspaces/kondo/devel/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs sensor_msgs message_runtime tf
