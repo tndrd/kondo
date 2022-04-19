@@ -33,5 +33,8 @@ include_directories(
 ## Install ##
 #############
 
-catkin_install_python(PROGRAMS scripts/test2.py
+catkin_install_python(PROGRAMS scripts/control.py
+        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+        
+catkin_install_python(PROGRAMS scripts/example_servo_publisher.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

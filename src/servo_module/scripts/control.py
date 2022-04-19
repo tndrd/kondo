@@ -6,14 +6,11 @@ import rosservice
 from time import time
 from std_msgs.msg     import Float64, String
 from webots_ros.srv   import set_float
-import servo_module
+
 from servo_module.msg import servos
 
 ROBOT_NAME = "beep_beep"
 #robot_name = rospy.wait_for_message('/model_name', String).data
-
-rospy.init_node('test', anonymous=True)
-print('hehe')
 
 def getSrvList():
 	srv_list = rosservice.get_service_list()
@@ -57,7 +54,6 @@ def registerServoDict(ctrl_set = None):
 	for ctrl_unit in ctrl_set:
 		srv_name = ctrl2srv(ctrl_unit)
 		if srv_name in srv_list:
-			print(srv_name)
 			client = rospy.ServiceProxy(srv_name, set_float)
 			servo_dict[ctrl_unit] = client
 		else:
@@ -103,20 +99,40 @@ def sendCommandsSync(servo_dict, name_list, val_list):
 
 
 if __name__ == "__main__":
+	rospy.init_node('test', anonymous=True)
+
 	servo_dict, ctrl_set = registerServoDict()
+	
+	def servosCallback(msg):
+		sendCommandsAsync(servo_dict, msg.names, msg.values)
+	
+	rospy.Subscriber("servo_cmds", servos, servosCallback)
+    
+	rospy.spin()
 
-	name_list = list(ctrl_set)
-	val_list  = [1 for name in name_list]
 
-	print("Async call:")
-	start = time()
-	sendCommandsAsync(servo_dict, name_list, val_list)
-	elapsed = time() - start
-	print("Done in %s s" % elapsed)
 
-	print("Sync call:")
-	start = time()
-	sendCommandsSync(servo_dict, name_list, val_list)
-	elapsed = time() - start
-	print("Done in %s s" % elapsed)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	

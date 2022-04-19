@@ -6,14 +6,13 @@ import rosservice
 from time import time
 from std_msgs.msg     import Float64, String
 from webots_ros.srv   import set_float
-import servo_module
+
 from servo_module.msg import servos
 
 ROBOT_NAME = "beep_beep"
 #robot_name = rospy.wait_for_message('/model_name', String).data
 
 rospy.init_node('test', anonymous=True)
-print('hehe')
 
 def getSrvList():
 	srv_list = rosservice.get_service_list()
@@ -57,7 +56,6 @@ def registerServoDict(ctrl_set = None):
 	for ctrl_unit in ctrl_set:
 		srv_name = ctrl2srv(ctrl_unit)
 		if srv_name in srv_list:
-			print(srv_name)
 			client = rospy.ServiceProxy(srv_name, set_float)
 			servo_dict[ctrl_unit] = client
 		else:

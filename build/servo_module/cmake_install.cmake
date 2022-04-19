@@ -89,6 +89,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/servo_module" TYPE PROGRAM FILES "/home/tndrd/workspaces/kondo/build/servo_module/catkin_generated/installspace/test2.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/servo_module" TYPE PROGRAM FILES "/home/tndrd/workspaces/kondo/build/servo_module/catkin_generated/installspace/control.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/servo_module" TYPE PROGRAM FILES "/home/tndrd/workspaces/kondo/build/servo_module/catkin_generated/installspace/example_servo_publisher.py")
 endif()
 
