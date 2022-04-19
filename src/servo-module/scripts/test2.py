@@ -32,6 +32,7 @@ def getRobotControlSet(srv_list):
 	ctrl_set = cleanControlSet(ctrl_set)
 	return ctrl_set
 
+
 def cleanControlSet(ctrl_set):
 	clean_ctrl_set = set()
 	srv_list = getSrvList()
@@ -41,6 +42,7 @@ def cleanControlSet(ctrl_set):
 		if srv_name in srv_list:
 			clean_ctrl_set.add(ctrl_unit)
 	return clean_ctrl_set
+
 		
 def registerServoDict(ctrl_set = None):
 	
@@ -61,14 +63,14 @@ def registerServoDict(ctrl_set = None):
 	
 	return servo_dict, ctrl_set
 
+
 def sendCommandsAsync(servo_dict, name_list, val_list):
 	
 	assert len(name_list) == len(val_list)
 	
 	async def exec_cmd(name, val):
-		print("Rotating %s..." % name)
+		await rospy.wait_for_service(ctrl2srv(name))
 		await servo_dict[name](val) 
-		print("Finished %s..." % name)
 		
 	ioloop = asyncio.get_event_loop()
 	tasks = []
@@ -85,6 +87,7 @@ def sendCommandsAsync(servo_dict, name_list, val_list):
 	ioloop.close() 
 	
 	#print("Done!")
+
 			
 def sendCommandsSync(servo_dict, name_list, val_list):
 	
@@ -94,61 +97,24 @@ def sendCommandsSync(servo_dict, name_list, val_list):
 		if name not in servo_dict:
 			print("Wrong command: servo %s is not available" % name)
 			continue
-		#print("Rotating %s..." % name)
 		servo_dict[name](val)
-	#print("Done!")
 
 
-		
-'''
-async def foo():
-    print('Running in foo')
-    await asyncio.sleep(0)
-    print('Explicit context switch to foo again')
+if __name__ == "__main__":
+	servo_dict, ctrl_set = registerServoDict()
 
+	name_list = list(ctrl_set)
+	val_list  = [1 for name in name_list]
 
-async def bar():
-    print('Explicit context to bar')
-    await asyncio.sleep(0)
-    print('Implicit context switch back to bar')
+	print("Async call:")
+	start = time()
+	sendCommandsAsync(servo_dict, name_list, val_list)
+	elapsed = time() - start
+	print("Done in %s s" % elapsed)
 
-
-ioloop = asyncio.get_event_loop()
-tasks = [ioloop.create_task(foo()), ioloop.create_task(bar())]
-wait_tasks = asyncio.wait(tasks)
-ioloop.run_until_complete(wait_tasks)
-ioloop.close()
-
-'''
-
-servo_dict, ctrl_set = registerServoDict()
-
-name_list = list(ctrl_set)
-val_list  = [1 for name in name_list]
-
-print("Async call:")
-start = time()
-sendCommandsAsync(servo_dict, name_list, val_list)
-elapsed = time() - start
-print("Done in %s s" % elapsed)
-
-print("Sync call:")
-start = time()
-sendCommandsSync(servo_dict, name_list, val_list)
-elapsed = time() - start
-print("Done in %s s" % elapsed)
-'''
-head_yaw_srv = '/' + robot_name + '/head_yaw/set_position'
- 
-rospy.wait_for_service(head_yaw_srv)
-
-try:
-    head_rot = rospy.ServiceProxy(head_yaw_srv, set_float)
-    res = head_rot(0.5)
-    print(res)
-
-except rospy.ServiceException as e:
-    print("Service call failed: %s"%e)
-'''
-
+	print("Sync call:")
+	start = time()
+	sendCommandsSync(servo_dict, name_list, val_list)
+	elapsed = time() - start
+	print("Done in %s s" % elapsed)
 
