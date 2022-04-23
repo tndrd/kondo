@@ -79,7 +79,6 @@ def sendCommands(servo_dict, name_list, val_list):
 		proxy_thread = threading.Thread(target=exec_cmd, args=(name, val))
 		proxy_thread.start()
 	
-	
 if __name__ == "__main__":
 	rospy.init_node('servo_cmds', anonymous=True)
 
@@ -88,6 +87,12 @@ if __name__ == "__main__":
 	def servosCallback(msg):
 		print("Recieved: ", msg.names, msg.values)
 		start = time()
+		
+		### Used for performance test
+		#names = list(ctrl_set)
+		#values = [1 for name in names]
+		#sendCommands(servo_dict, names, values)
+		
 		sendCommands(servo_dict, msg.names, msg.values)
 		print("Processed in %s ms\n" % ((time() - start) * 1000))
 		

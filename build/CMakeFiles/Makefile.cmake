@@ -24,7 +24,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/tndrd/workspaces/kondo/src/servo_module/package.xml"
   "/home/tndrd/workspaces/kondo/src/servo_module/scripts/control.py"
   "/home/tndrd/workspaces/kondo/src/servo_module/scripts/example_servo_publisher.py"
-  "/home/tndrd/workspaces/kondo/src/servo_module/scripts/service.py"
+  "/home/tndrd/workspaces/kondo/src/servo_module/scripts/example_test_control_performance.py"
   "/opt/ros/noetic/share/actionlib/cmake/actionlib-msg-extras.cmake"
   "/opt/ros/noetic/share/actionlib/cmake/actionlibConfig-version.cmake"
   "/opt/ros/noetic/share/actionlib/cmake/actionlibConfig.cmake"

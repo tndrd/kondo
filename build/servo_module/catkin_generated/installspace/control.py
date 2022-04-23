@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 
 import rospy
-import asyncio
+import threading
 import rosservice
-import service
 
 from time import time
 from std_msgs.msg     import Float64, String
 from webots_ros.srv   import set_float
-
 from servo_module.msg import servos
+
 
 ROBOT_NAME = "beep_beep"
 #robot_name = rospy.wait_for_message('/model_name', String).data
@@ -62,58 +61,38 @@ def registerServoDict(ctrl_set = None):
 			print("Trying to register proxy of service %s, which is not available")
 	
 	return servo_dict, ctrl_set
+	
 
-
-async def sendCommandsAsync(servo_dict, name_list, val_list):
+def sendCommands(servo_dict, name_list, val_list):
 	
 	assert len(name_list) == len(val_list)
 	
-	async def exec_cmd(name, val):
+	def exec_cmd(name, val):
 		srv_name = ctrl2srv(name)
 		rospy.wait_for_service(srv_name)
-		servo_dict[name](val) 
-	
-	tasks = []
-	
-	for name, val in zip(name_list, val_list):	
-		if name not in servo_dict:
-			print("Wrong command: servo %s is not available" % name)
-			continue
-		
-		task = exec_cmd(*(name, val))
-		tasks.append(task)
-	
-	await asyncio.gather(*tasks)
-	
-# Should call sendCommandsAsync
-def sendCommandsSync(servo_dict, name_list, val_list):
-	
-	assert len(name_list) == len(val_list)
-	
-	for name, val in zip(name_list, val_list):	
-		if name not in servo_dict:
-			print("Wrong command: servo %s is not available" % name)
-			continue
 		servo_dict[name](val)
-
-
+	
+	for name, val in zip(name_list, val_list):	
+		if name not in servo_dict:
+			print("Wrong command: servo %s is not available" % name)
+			continue
+		proxy_thread = threading.Thread(target=exec_cmd, args=(name, val))
+		proxy_thread.start()
+	
+	
 if __name__ == "__main__":
-	rospy.init_node('test', anonymous=True)
+	rospy.init_node('servo_cmds', anonymous=True)
 
 	servo_dict, ctrl_set = registerServoDict()
 	
 	def servosCallback(msg):
 		print("Recieved: ", msg.names, msg.values)
 		start = time()
-		asyncio.run(sendCommandsAsync(servo_dict, msg.names, msg.values))
-		print("Processed in %s seconds\n" % (time() - start))
-	
-	print("Listening to commands...")
-	
+		sendCommands(servo_dict, msg.names, msg.values)
+		print("Processed in %s ms\n" % ((time() - start) * 1000))
+		
 	rospy.Subscriber("servo_cmds", servos, servosCallback)
-    
-	asyncio.run(sendCommandsAsync(servo_dict, ['head_yaw'], [1]))
-    
+	print("Listening to commands...")
 	rospy.spin()
 
 
