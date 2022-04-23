@@ -15,7 +15,7 @@ STEP = 3.14 / 6
 r = rospy.Rate(1)
 
 while not rospy.is_shutdown():
-	msg.values = [sin(x), sin(x), -sin(x)]
+	msg.values = [sin(x), sin(x), sin(x)]
 	pub.publish(msg)
 	x += STEP
 	r.sleep()

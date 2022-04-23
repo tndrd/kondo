@@ -1,0 +1,7 @@
+set(catkin_virtualenv_SETUP_PY_SETUP_MODULE "distutils.core")
+set(catkin_virtualenv_SETUP_PY_VERSION "0.7.0")
+set(catkin_virtualenv_SETUP_PY_SCRIPTS "")
+set(catkin_virtualenv_SETUP_PY_PACKAGES "catkin_virtualenv")
+set(catkin_virtualenv_SETUP_PY_PACKAGE_DIRS "src/catkin_virtualenv")
+set(catkin_virtualenv_SETUP_PY_MODULES "")
+set(catkin_virtualenv_SETUP_PY_MODULE_DIRS "")

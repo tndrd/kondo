@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec /home/tndrd/workspaces/kondo/devel/share/aiorospy_examples/venv/bin/python /home/tndrd/workspaces/kondo/src/aiorospy/aiorospy_examples/scripts/actions "$@"

@@ -1,2 +1,2 @@
-mytest:servo_module:testpkg
+servo_module
 -DCATKIN_DEVEL_PREFIX=/home/tndrd/workspaces/kondo/devel -DCMAKE_INSTALL_PREFIX=/home/tndrd/workspaces/kondo/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/tndrd/workspaces/kondo/install
+
+Name: aiorospy_examples
+Description: Description of aiorospy_examples
+Version: 0.2.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

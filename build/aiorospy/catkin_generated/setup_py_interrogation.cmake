@@ -1,0 +1,7 @@
+set(aiorospy_SETUP_PY_SETUP_MODULE "setuptools")
+set(aiorospy_SETUP_PY_VERSION "0.2.0")
+set(aiorospy_SETUP_PY_SCRIPTS "")
+set(aiorospy_SETUP_PY_PACKAGES "aiorospy")
+set(aiorospy_SETUP_PY_PACKAGE_DIRS "src/aiorospy")
+set(aiorospy_SETUP_PY_MODULES "")
+set(aiorospy_SETUP_PY_MODULE_DIRS "")

@@ -3,6 +3,8 @@
 import rospy
 import asyncio
 import rosservice
+import service
+
 from time import time
 from std_msgs.msg     import Float64, String
 from webots_ros.srv   import set_float
@@ -62,19 +64,15 @@ def registerServoDict(ctrl_set = None):
 	return servo_dict, ctrl_set
 
 
-def sendCommandsAsync(servo_dict, name_list, val_list):
+async def sendCommandsAsync(servo_dict, name_list, val_list):
 	
 	assert len(name_list) == len(val_list)
 	
 	async def exec_cmd(name, val):
-		print("here")
-		await rospy.wait_for_service(ctrl2srv(name))
-		print("here2")
-		res = await servo_dict[name](val) 
-		print(res)
-		
-	ioloop = asyncio.new_event_loop()
-	asyncio.set_event_loop(ioloop)
+		srv_name = ctrl2srv(name)
+		rospy.wait_for_service(srv_name)
+		servo_dict[name](val) 
+	
 	tasks = []
 	
 	for name, val in zip(name_list, val_list):	
@@ -82,16 +80,12 @@ def sendCommandsAsync(servo_dict, name_list, val_list):
 			print("Wrong command: servo %s is not available" % name)
 			continue
 		
-		task = ioloop.create_task(exec_cmd(name, val))
+		task = exec_cmd(*(name, val))
 		tasks.append(task)
 	
-	wait_tasks = asyncio.wait(tasks)
-	ioloop.run_until_complete(wait_tasks)
-	ioloop.close() 
+	await asyncio.gather(*tasks)
 	
-	#print("Done!")
-
-			
+# Should call sendCommandsAsync
 def sendCommandsSync(servo_dict, name_list, val_list):
 	
 	assert len(name_list) == len(val_list)
@@ -110,11 +104,15 @@ if __name__ == "__main__":
 	
 	def servosCallback(msg):
 		print("Recieved: ", msg.names, msg.values)
-		sendCommandsAsync(servo_dict, msg.names, msg.values)
+		start = time()
+		asyncio.run(sendCommandsAsync(servo_dict, msg.names, msg.values))
+		print("Processed in %s seconds\n" % (time() - start))
 	
 	print("Listening to commands...")
 	
 	rospy.Subscriber("servo_cmds", servos, servosCallback)
+    
+	asyncio.run(sendCommandsAsync(servo_dict, ['head_yaw'], [1]))
     
 	rospy.spin()
 

@@ -1,0 +1,8 @@
+prefix=/home/tndrd/workspaces/kondo/install
+
+Name: test_catkin_virtualenv_py3_isolated
+Description: Description of test_catkin_virtualenv_py3_isolated
+Version: 0.7.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

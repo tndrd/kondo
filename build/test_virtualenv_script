@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec /home/tndrd/workspaces/kondo/install/share/test_catkin_virtualenv_py3_isolated/venv/bin/python /home/tndrd/workspaces/kondo/install/share/test_catkin_virtualenv_py3_isolated/catkin_virtualenv_scripts/test_virtualenv_script "$@"

@@ -38,3 +38,6 @@ catkin_install_python(PROGRAMS scripts/control.py
         
 catkin_install_python(PROGRAMS scripts/example_servo_publisher.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+        
+catkin_install_python(PROGRAMS scripts/service.py
+        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
