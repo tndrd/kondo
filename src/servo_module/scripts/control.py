@@ -91,7 +91,6 @@ if __name__ == "__main__":
 		sendCommands(servo_dict, msg.names, msg.values)
 		print("Processed in %s ms\n" % ((time() - start) * 1000))
 		
-		
 	rospy.Subscriber("servo_cmds", servos, servosCallback)
 	print("Listening to commands...")
 	rospy.spin()
