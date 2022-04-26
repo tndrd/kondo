@@ -6,7 +6,7 @@ from sensor_msgs.msg import JointState
 
 ROBOT_NAME = "beep_beep"
 SAMPLING_PERIOD = 32
-
+JOINT_STATE_TOPIC = "/" + ROBOT_NAME + "/joint_state"
 
 #TODO add opportunity to add sensors manually without parsing service list 
 def getSensors():
@@ -53,8 +53,7 @@ class PositionSensor():
 		rospy.wait_for_message(self.input_topic, Float64Stamped)
 		
 		self.joint_name   = "_".join(psensor_name.split("/")[2].split("_")[:-1])
-		self.output_topic = "/" + ROBOT_NAME + "/" + self.joint_name + "/joint_state" 
-		self.pub = rospy.Publisher(self.output_topic, JointState, queue_size=10)	
+		self.pub = rospy.Publisher(JOINT_STATE_TOPIC, JointState, queue_size=10)	
 		rospy.Timer(rospy.Duration(SAMPLING_PERIOD / 1000), self.output_callback)
 		
 	def input_callback(self, msg):
@@ -64,7 +63,7 @@ class PositionSensor():
 	def output_callback(self, event=None):
 		msg = JointState()
 		msg.header = self.header
-		msg.name = self.joint_name
+		msg.name = [self.joint_name]
 		msg.position = [self.position]
 		self.pub.publish(msg)
 
