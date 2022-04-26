@@ -368,9 +368,6 @@ UBUNTU:BOOL=TRUE
 UBUNTU_FOCAL:BOOL=TRUE
 
 //Path to a file.
-_file_name:FILEPATH=/home/tndrd/workspaces/kondo/src/catkin_virtualenv/test_catkin_virtualenv_isolated/test/virtualenv_script.test
-
-//Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/src/googletest/googlemock/include/gmock/gmock.h
 
 //Path to a file.
@@ -382,38 +379,14 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
-//Path to a file.
-_path_name:FILEPATH=/home/tndrd/workspaces/kondo/src/catkin_virtualenv/test_catkin_virtualenv_isolated/test
-
 //The directory containing a CMake configuration file for actionlib.
 actionlib_DIR:PATH=/opt/ros/noetic/share/actionlib/cmake
 
 //The directory containing a CMake configuration file for actionlib_msgs.
 actionlib_msgs_DIR:PATH=/opt/ros/noetic/share/actionlib_msgs/cmake
 
-//Value Computed by CMake
-aiorospy_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/aiorospy/aiorospy
-
-//Value Computed by CMake
-aiorospy_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/aiorospy/aiorospy
-
-//Value Computed by CMake
-aiorospy_examples_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/aiorospy/aiorospy_examples
-
-//Value Computed by CMake
-aiorospy_examples_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/aiorospy/aiorospy_examples
-
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/noetic/share/catkin/cmake
-
-//Value Computed by CMake
-catkin_virtualenv_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/catkin_virtualenv/catkin_virtualenv
-
-//The directory containing a CMake configuration file for catkin_virtualenv.
-catkin_virtualenv_DIR:PATH=/home/tndrd/workspaces/kondo/devel/share/catkin_virtualenv/cmake
-
-//Value Computed by CMake
-catkin_virtualenv_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/catkin_virtualenv/catkin_virtualenv
 
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/noetic/share/class_loader/cmake
@@ -536,12 +509,6 @@ moveit_ros_planning_interface_DIR:PATH=/opt/ros/noetic/share/moveit_ros_planning
 //The directory containing a CMake configuration file for moveit_ros_warehouse.
 moveit_ros_warehouse_DIR:PATH=/opt/ros/noetic/share/moveit_ros_warehouse/cmake
 
-//Value Computed by CMake
-mytest_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/mytest
-
-//Value Computed by CMake
-mytest_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/mytest
-
 //The directory containing a CMake configuration file for object_recognition_msgs.
 object_recognition_msgs_DIR:PATH=/opt/ros/noetic/share/object_recognition_msgs/cmake
 
@@ -578,17 +545,11 @@ rosgraph_msgs_DIR:PATH=/opt/ros/noetic/share/rosgraph_msgs/cmake
 //The directory containing a CMake configuration file for roslib.
 roslib_DIR:PATH=/opt/ros/noetic/share/roslib/cmake
 
-//The directory containing a CMake configuration file for roslint.
-roslint_DIR:PATH=/opt/ros/noetic/share/roslint/cmake
-
 //The directory containing a CMake configuration file for rospack.
 rospack_DIR:PATH=/opt/ros/noetic/share/rospack/cmake
 
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/noetic/share/rospy/cmake
-
-//The directory containing a CMake configuration file for rostest.
-rostest_DIR:PATH=/opt/ros/noetic/share/rostest/cmake
 
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/noetic/share/rostime/cmake
@@ -613,30 +574,6 @@ std_msgs_DIR:PATH=/opt/ros/noetic/share/std_msgs/cmake
 
 //The directory containing a CMake configuration file for std_srvs.
 std_srvs_DIR:PATH=/opt/ros/noetic/share/std_srvs/cmake
-
-//Value Computed by CMake
-test_catkin_virtualenv_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/catkin_virtualenv/test_catkin_virtualenv
-
-//Value Computed by CMake
-test_catkin_virtualenv_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/catkin_virtualenv/test_catkin_virtualenv
-
-//Value Computed by CMake
-test_catkin_virtualenv_inherited_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/catkin_virtualenv/test_catkin_virtualenv_inherited
-
-//Value Computed by CMake
-test_catkin_virtualenv_inherited_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/catkin_virtualenv/test_catkin_virtualenv_inherited
-
-//Value Computed by CMake
-test_catkin_virtualenv_py3_isolated_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/catkin_virtualenv/test_catkin_virtualenv_isolated
-
-//Value Computed by CMake
-test_catkin_virtualenv_py3_isolated_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/catkin_virtualenv/test_catkin_virtualenv_isolated
-
-//Value Computed by CMake
-testpkg_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/testpkg
-
-//Value Computed by CMake
-testpkg_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/testpkg
 
 //The directory containing a CMake configuration file for tf2.
 tf2_DIR:PATH=/opt/ros/noetic/share/tf2/cmake

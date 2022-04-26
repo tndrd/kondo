@@ -1,8 +1,8 @@
 
 "use strict";
 
-let servos = require('./servos.js');
+let servo_command = require('./servo_command.js');
 
 module.exports = {
-  servos: servos,
+  servo_command: servo_command,
 };

@@ -1,8 +1,0 @@
-prefix=/home/tndrd/workspaces/kondo/devel
-
-Name: catkin_virtualenv
-Description: Description of catkin_virtualenv
-Version: 0.7.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

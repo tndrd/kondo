@@ -1,8 +1,0 @@
-prefix=/home/tndrd/workspaces/kondo/install
-
-Name: aiorospy
-Description: Description of aiorospy
-Version: 0.2.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

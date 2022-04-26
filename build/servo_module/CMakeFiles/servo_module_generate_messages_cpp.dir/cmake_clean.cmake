@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/tndrd/workspaces/kondo/devel/include/servo_module/servos.h"
+  "/home/tndrd/workspaces/kondo/devel/include/servo_module/servo_command.h"
   "CMakeFiles/servo_module_generate_messages_cpp"
 )
 

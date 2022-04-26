@@ -6,7 +6,7 @@ find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs sensor_msgs messag
 
 add_message_files(
   FILES
-  servos.msg
+  servo_command.msg
 )
 
 generate_messages(

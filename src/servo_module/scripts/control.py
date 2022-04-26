@@ -1,128 +1,105 @@
 #!/usr/bin/env python
 
-import rospy
 import threading
+from time import time
+
+import rospy
 import rosservice
 
-from time import time
-from std_msgs.msg     import Float64, String
 from webots_ros.srv   import set_float
-from servo_module.msg import servos
+from servo_module.msg import servo_command
 
 
 ROBOT_NAME = "beep_beep"
+SERVO_CONTROL_TOPIC = "servo_control"
 #robot_name = rospy.wait_for_message('/model_name', String).data
 
-def getSrvList():
-	srv_list = rosservice.get_service_list()
-	return srv_list
 
-def ctrl2srv(ctrl):
-	return '/' + ROBOT_NAME + '/' + ctrl + '/set_position'
-	
+def get_srv_list():
+    """Gets active services list"""
+    srv_list = rosservice.get_service_list()
+    return srv_list
+
+
+def servo2srv(servo):
+    """Transforms servo name to the corresponding /set_position service"""
+    return '/' + ROBOT_NAME + '/' + servo + '/set_position'
+
+
 # servo name set should be created manually if it is possible to avoid wrong entity calls
-def getRobotControlSet(srv_list):
-	ctrl_set = set()
-	for srv in srv_list:
-		srv = srv.split("/")
-		if srv[1] == ROBOT_NAME:
-			ctrl_unit = srv[2]
-			ctrl_set.add(ctrl_unit)
-	
-	ctrl_set = cleanControlSet(ctrl_set)
-	return ctrl_set
+def get_robot_servo_set(srv_list):
+    """Gets set of servos by parsing the list of available services"""
+    new_servo_set = set()
+
+    for srv in srv_list:
+        srv = srv.split("/")
+        if srv[1] == ROBOT_NAME:
+            servo = srv[2]
+            new_servo_set.add(servo)
+
+    new_servo_set = clean_servo_set(new_servo_set)
+    return new_servo_set
 
 
-def cleanControlSet(ctrl_set):
-	clean_ctrl_set = set()
-	srv_list = getSrvList()
-	
-	for ctrl_unit in ctrl_set:
-		srv_name = ctrl2srv(ctrl_unit)
-		if srv_name in srv_list:
-			clean_ctrl_set.add(ctrl_unit)
-	return clean_ctrl_set
+def clean_servo_set(raw_servo_set):
+    """Cleans parsed servo set from names which correspond to unavailable services"""
+    cleaned_servo_set = set()
+    srv_list = get_srv_list()
+    for servo in raw_servo_set:
+        srv_name = servo2srv(servo)
+        if srv_name in srv_list:
+            cleaned_servo_set.add(servo)
+    return cleaned_servo_set
 
-		
-def registerServoDict(ctrl_set = None):
-	
-	servo_dict = dict()
-	srv_list = getSrvList()
-	
-	if ctrl_set is None:
-		ctrl_set = getRobotControlSet(srv_list)
-	
-	for ctrl_unit in ctrl_set:
-		srv_name = ctrl2srv(ctrl_unit)
-		if srv_name in srv_list:
-			client = rospy.ServiceProxy(srv_name, set_float)
-			servo_dict[ctrl_unit] = client
-		else:
-			print("Trying to register proxy of service %s, which is not available")
-	
-	return servo_dict, ctrl_set
-	
 
-def sendCommands(servo_dict, name_list, val_list):
-	
-	assert len(name_list) == len(val_list)
-	
-	def exec_cmd(name, val):
-		srv_name = ctrl2srv(name)
-		rospy.wait_for_service(srv_name)
-		servo_dict[name](val)
-	
-	for name, val in zip(name_list, val_list):	
-		if name not in servo_dict:
-			print("Wrong command: servo %s is not available" % name)
-			continue
-		proxy_thread = threading.Thread(target=exec_cmd, args=(name, val))
-		proxy_thread.start()
-	
+def register_servo_dict(new_servo_set = None):
+    """Returns a dict with name - set_position proxy pairs"""
+    new_proxy_dict = {}
+
+    if new_servo_set is None:
+        srv_list = get_srv_list()
+        new_servo_set = get_robot_servo_set(srv_list)
+
+    for servo in new_servo_set:
+        srv_name = servo2srv(servo)
+        if srv_name in srv_list:
+            client = rospy.ServiceProxy(srv_name, set_float)
+            new_proxy_dict[servo] = client
+        else:
+            print(f"Trying to register proxy of service {srv_name}, which is not available")
+
+    return new_proxy_dict, new_servo_set
+
+
+def send_positions(servo_dict, servo_list, val_list):
+    """Sends position commands to servos"""
+    assert len(servo_list) == len(val_list)
+
+    def send_command(servo, val):
+        srv_name = servo2srv(servo)
+        rospy.wait_for_service(srv_name)
+        servo_dict[servo](val)
+
+    for servo, val in zip(servo_list, val_list):
+        if servo not in servo_dict:
+            print(f"Wrong command: servo {servo} is not available")
+            continue
+        proxy_thread = threading.Thread(target=send_command, args=(servo, val))
+        proxy_thread.start()
+
+
 if __name__ == "__main__":
-	rospy.init_node('servo_cmds', anonymous=True)
+    rospy.init_node('servo_control', anonymous=True)
 
-	servo_dict, ctrl_set = registerServoDict()
-	
-	def servosCallback(msg):
-		print("Recieved: ", msg.names, msg.values)
-		start = time()
-		
-		### Used for performance test
-		#names = list(ctrl_set)
-		#values = [1 for name in names]
-		#sendCommands(servo_dict, names, values)
-		
-		sendCommands(servo_dict, msg.names, msg.values)
-		print("Processed in %s ms\n" % ((time() - start) * 1000))
-		
-	rospy.Subscriber("servo_cmds", servos, servosCallback)
-	print("Listening to commands...")
-	rospy.spin()
+    robot_servo_dict, robot_servo_set = register_servo_dict()
 
+    def servo_command_callback(msg):
+        """Recieves servo commands and executes them"""
+        print("Recieved: ", msg.names, msg.values)
+        start = time()
+        send_positions(robot_servo_dict, msg.names, msg.values)
+        print(f"Processed in {(time() - start) * 1000} ms\n")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
+    rospy.Subscriber(SERVO_CONTROL_TOPIC, servo_command, servo_command_callback)
+    print("Listening to commands...")
+    rospy.spin()

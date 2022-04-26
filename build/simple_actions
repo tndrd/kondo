@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-exec /home/tndrd/workspaces/kondo/install/share/aiorospy_examples/venv/bin/python /home/tndrd/workspaces/kondo/install/share/aiorospy_examples/catkin_virtualenv_scripts/simple_actions "$@"

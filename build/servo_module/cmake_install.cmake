@@ -38,7 +38,7 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/servo_module/msg" TYPE FILE FILES "/home/tndrd/workspaces/kondo/src/servo_module/msg/servos.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/servo_module/msg" TYPE FILE FILES "/home/tndrd/workspaces/kondo/src/servo_module/msg/servo_command.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

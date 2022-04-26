@@ -678,21 +678,6 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/rule:
-	cd /home/tndrd/workspaces/kondo/build && $(MAKE) -f CMakeFiles/Makefile2 servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/rule
-.PHONY : servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/rule
-
-# Convenience name for target.
-_servo_module_generate_messages_check_deps_servos: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/rule
-
-.PHONY : _servo_module_generate_messages_check_deps_servos
-
-# fast build rule for target.
-_servo_module_generate_messages_check_deps_servos/fast:
-	cd /home/tndrd/workspaces/kondo/build && $(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/build
-.PHONY : _servo_module_generate_messages_check_deps_servos/fast
-
-# Convenience name for target.
 servo_module/CMakeFiles/moveit_msgs_generate_messages_eus.dir/rule:
 	cd /home/tndrd/workspaces/kondo/build && $(MAKE) -f CMakeFiles/Makefile2 servo_module/CMakeFiles/moveit_msgs_generate_messages_eus.dir/rule
 .PHONY : servo_module/CMakeFiles/moveit_msgs_generate_messages_eus.dir/rule
@@ -1006,6 +991,21 @@ servo_module_generate_messages_eus: servo_module/CMakeFiles/servo_module_generat
 servo_module_generate_messages_eus/fast:
 	cd /home/tndrd/workspaces/kondo/build && $(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/build
 .PHONY : servo_module_generate_messages_eus/fast
+
+# Convenience name for target.
+servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/rule:
+	cd /home/tndrd/workspaces/kondo/build && $(MAKE) -f CMakeFiles/Makefile2 servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/rule
+.PHONY : servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/rule
+
+# Convenience name for target.
+_servo_module_generate_messages_check_deps_servo_command: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/rule
+
+.PHONY : _servo_module_generate_messages_check_deps_servo_command
+
+# fast build rule for target.
+_servo_module_generate_messages_check_deps_servo_command/fast:
+	cd /home/tndrd/workspaces/kondo/build && $(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/build
+.PHONY : _servo_module_generate_messages_check_deps_servo_command/fast
 
 # Convenience name for target.
 servo_module/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule:
@@ -1712,7 +1712,6 @@ help:
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_py"
-	@echo "... _servo_module_generate_messages_check_deps_servos"
 	@echo "... moveit_msgs_generate_messages_eus"
 	@echo "... edit_cache"
 	@echo "... sensor_msgs_generate_messages_nodejs"
@@ -1735,6 +1734,7 @@ help:
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... servo_module_generate_messages_eus"
+	@echo "... _servo_module_generate_messages_check_deps_servo_command"
 	@echo "... dynamic_reconfigure_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_py"

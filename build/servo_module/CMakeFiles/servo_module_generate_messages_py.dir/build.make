@@ -53,22 +53,22 @@ CMAKE_BINARY_DIR = /home/tndrd/workspaces/kondo/build
 # Include the progress variables for this target.
 include servo_module/CMakeFiles/servo_module_generate_messages_py.dir/progress.make
 
-servo_module/CMakeFiles/servo_module_generate_messages_py: /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servos.py
+servo_module/CMakeFiles/servo_module_generate_messages_py: /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servo_command.py
 servo_module/CMakeFiles/servo_module_generate_messages_py: /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/__init__.py
 
 
-/home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servos.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servos.py: /home/tndrd/workspaces/kondo/src/servo_module/msg/servos.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG servo_module/servos"
-	cd /home/tndrd/workspaces/kondo/build/servo_module && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/tndrd/workspaces/kondo/src/servo_module/msg/servos.msg -Iservo_module:/home/tndrd/workspaces/kondo/src/servo_module/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p servo_module -o /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg
+/home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servo_command.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servo_command.py: /home/tndrd/workspaces/kondo/src/servo_module/msg/servo_command.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG servo_module/servo_command"
+	cd /home/tndrd/workspaces/kondo/build/servo_module && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/tndrd/workspaces/kondo/src/servo_module/msg/servo_command.msg -Iservo_module:/home/tndrd/workspaces/kondo/src/servo_module/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p servo_module -o /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg
 
 /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/__init__.py: /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servos.py
+/home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/__init__.py: /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servo_command.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for servo_module"
 	cd /home/tndrd/workspaces/kondo/build/servo_module && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg --initpy
 
 servo_module_generate_messages_py: servo_module/CMakeFiles/servo_module_generate_messages_py
-servo_module_generate_messages_py: /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servos.py
+servo_module_generate_messages_py: /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/_servo_command.py
 servo_module_generate_messages_py: /home/tndrd/workspaces/kondo/devel/lib/python3/dist-packages/servo_module/msg/__init__.py
 servo_module_generate_messages_py: servo_module/CMakeFiles/servo_module_generate_messages_py.dir/build.make
 

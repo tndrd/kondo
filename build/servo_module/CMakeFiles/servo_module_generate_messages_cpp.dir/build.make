@@ -53,17 +53,17 @@ CMAKE_BINARY_DIR = /home/tndrd/workspaces/kondo/build
 # Include the progress variables for this target.
 include servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/progress.make
 
-servo_module/CMakeFiles/servo_module_generate_messages_cpp: /home/tndrd/workspaces/kondo/devel/include/servo_module/servos.h
+servo_module/CMakeFiles/servo_module_generate_messages_cpp: /home/tndrd/workspaces/kondo/devel/include/servo_module/servo_command.h
 
 
-/home/tndrd/workspaces/kondo/devel/include/servo_module/servos.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
-/home/tndrd/workspaces/kondo/devel/include/servo_module/servos.h: /home/tndrd/workspaces/kondo/src/servo_module/msg/servos.msg
-/home/tndrd/workspaces/kondo/devel/include/servo_module/servos.h: /opt/ros/noetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from servo_module/servos.msg"
-	cd /home/tndrd/workspaces/kondo/src/servo_module && /home/tndrd/workspaces/kondo/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/tndrd/workspaces/kondo/src/servo_module/msg/servos.msg -Iservo_module:/home/tndrd/workspaces/kondo/src/servo_module/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p servo_module -o /home/tndrd/workspaces/kondo/devel/include/servo_module -e /opt/ros/noetic/share/gencpp/cmake/..
+/home/tndrd/workspaces/kondo/devel/include/servo_module/servo_command.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/tndrd/workspaces/kondo/devel/include/servo_module/servo_command.h: /home/tndrd/workspaces/kondo/src/servo_module/msg/servo_command.msg
+/home/tndrd/workspaces/kondo/devel/include/servo_module/servo_command.h: /opt/ros/noetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from servo_module/servo_command.msg"
+	cd /home/tndrd/workspaces/kondo/src/servo_module && /home/tndrd/workspaces/kondo/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/tndrd/workspaces/kondo/src/servo_module/msg/servo_command.msg -Iservo_module:/home/tndrd/workspaces/kondo/src/servo_module/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p servo_module -o /home/tndrd/workspaces/kondo/devel/include/servo_module -e /opt/ros/noetic/share/gencpp/cmake/..
 
 servo_module_generate_messages_cpp: servo_module/CMakeFiles/servo_module_generate_messages_cpp
-servo_module_generate_messages_cpp: /home/tndrd/workspaces/kondo/devel/include/servo_module/servos.h
+servo_module_generate_messages_cpp: /home/tndrd/workspaces/kondo/devel/include/servo_module/servo_command.h
 servo_module_generate_messages_cpp: servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/build.make
 
 .PHONY : servo_module_generate_messages_cpp

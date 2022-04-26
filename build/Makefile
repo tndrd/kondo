@@ -727,19 +727,6 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named _servo_module_generate_messages_check_deps_servos
-
-# Build rule for target.
-_servo_module_generate_messages_check_deps_servos: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _servo_module_generate_messages_check_deps_servos
-.PHONY : _servo_module_generate_messages_check_deps_servos
-
-# fast build rule for target.
-_servo_module_generate_messages_check_deps_servos/fast:
-	$(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/build
-.PHONY : _servo_module_generate_messages_check_deps_servos/fast
-
-#=============================================================================
 # Target rules for targets named moveit_msgs_generate_messages_eus
 
 # Build rule for target.
@@ -1011,6 +998,19 @@ servo_module_generate_messages_eus: cmake_check_build_system
 servo_module_generate_messages_eus/fast:
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/build
 .PHONY : servo_module_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named _servo_module_generate_messages_check_deps_servo_command
+
+# Build rule for target.
+_servo_module_generate_messages_check_deps_servo_command: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _servo_module_generate_messages_check_deps_servo_command
+.PHONY : _servo_module_generate_messages_check_deps_servo_command
+
+# fast build rule for target.
+_servo_module_generate_messages_check_deps_servo_command/fast:
+	$(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/build
+.PHONY : _servo_module_generate_messages_check_deps_servo_command/fast
 
 #=============================================================================
 # Target rules for targets named dynamic_reconfigure_generate_messages_lisp
@@ -1640,7 +1640,6 @@ help:
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_py"
-	@echo "... _servo_module_generate_messages_check_deps_servos"
 	@echo "... moveit_msgs_generate_messages_eus"
 	@echo "... sensor_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_cpp"
@@ -1662,6 +1661,7 @@ help:
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... servo_module_generate_messages_eus"
+	@echo "... _servo_module_generate_messages_check_deps_servo_command"
 	@echo "... dynamic_reconfigure_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_py"

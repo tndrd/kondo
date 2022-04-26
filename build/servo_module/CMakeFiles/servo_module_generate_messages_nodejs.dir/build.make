@@ -53,16 +53,16 @@ CMAKE_BINARY_DIR = /home/tndrd/workspaces/kondo/build
 # Include the progress variables for this target.
 include servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/progress.make
 
-servo_module/CMakeFiles/servo_module_generate_messages_nodejs: /home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg/servos.js
+servo_module/CMakeFiles/servo_module_generate_messages_nodejs: /home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg/servo_command.js
 
 
-/home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg/servos.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
-/home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg/servos.js: /home/tndrd/workspaces/kondo/src/servo_module/msg/servos.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from servo_module/servos.msg"
-	cd /home/tndrd/workspaces/kondo/build/servo_module && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/tndrd/workspaces/kondo/src/servo_module/msg/servos.msg -Iservo_module:/home/tndrd/workspaces/kondo/src/servo_module/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p servo_module -o /home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg
+/home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg/servo_command.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg/servo_command.js: /home/tndrd/workspaces/kondo/src/servo_module/msg/servo_command.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from servo_module/servo_command.msg"
+	cd /home/tndrd/workspaces/kondo/build/servo_module && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/tndrd/workspaces/kondo/src/servo_module/msg/servo_command.msg -Iservo_module:/home/tndrd/workspaces/kondo/src/servo_module/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p servo_module -o /home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg
 
 servo_module_generate_messages_nodejs: servo_module/CMakeFiles/servo_module_generate_messages_nodejs
-servo_module_generate_messages_nodejs: /home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg/servos.js
+servo_module_generate_messages_nodejs: /home/tndrd/workspaces/kondo/devel/share/gennodejs/ros/servo_module/msg/servo_command.js
 servo_module_generate_messages_nodejs: servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/build.make
 
 .PHONY : servo_module_generate_messages_nodejs

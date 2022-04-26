@@ -1,1 +1,1 @@
-from ._servos import *
+from ._servo_command import *

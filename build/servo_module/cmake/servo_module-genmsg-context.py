@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/tndrd/workspaces/kondo/src/servo_module/msg/servos.msg"
+messages_str = "/home/tndrd/workspaces/kondo/src/servo_module/msg/servo_command.msg"
 services_str = ""
 pkg_name = "servo_module"
 dependencies_str = "std_msgs"

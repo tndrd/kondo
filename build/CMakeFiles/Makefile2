@@ -180,7 +180,6 @@ servo_module/clean: servo_module/CMakeFiles/std_msgs_generate_messages_nodejs.di
 servo_module/clean: servo_module/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 servo_module/clean: servo_module/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 servo_module/clean: servo_module/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-servo_module/clean: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/clean
 servo_module/clean: servo_module/CMakeFiles/moveit_msgs_generate_messages_eus.dir/clean
 servo_module/clean: servo_module/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
 servo_module/clean: servo_module/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
@@ -202,6 +201,7 @@ servo_module/clean: servo_module/CMakeFiles/tf_generate_messages_cpp.dir/clean
 servo_module/clean: servo_module/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 servo_module/clean: servo_module/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 servo_module/clean: servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/clean
+servo_module/clean: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/clean
 servo_module/clean: servo_module/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
 servo_module/clean: servo_module/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean
 servo_module/clean: servo_module/CMakeFiles/std_srvs_generate_messages_py.dir/clean
@@ -551,8 +551,8 @@ servo_module/CMakeFiles/servo_module_gennodejs.dir/clean:
 # Target rules for target servo_module/CMakeFiles/servo_module_generate_messages_lisp.dir
 
 # All Build rule for target.
-servo_module/CMakeFiles/servo_module_generate_messages_lisp.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/all
 servo_module/CMakeFiles/servo_module_generate_messages_lisp.dir/all: servo_module/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+servo_module/CMakeFiles/servo_module_generate_messages_lisp.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/all
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_lisp.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_lisp.dir/depend
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_lisp.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=12 "Built target servo_module_generate_messages_lisp"
@@ -1093,7 +1093,7 @@ servo_module/CMakeFiles/object_recognition_msgs_generate_messages_eus.dir/clean:
 
 # All Build rule for target.
 servo_module/CMakeFiles/servo_module_generate_messages_py.dir/all: servo_module/CMakeFiles/std_msgs_generate_messages_py.dir/all
-servo_module/CMakeFiles/servo_module_generate_messages_py.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/all
+servo_module/CMakeFiles/servo_module_generate_messages_py.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/all
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_py.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_py.dir/depend
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_py.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=14,15 "Built target servo_module_generate_messages_py"
@@ -1121,7 +1121,7 @@ servo_module/CMakeFiles/servo_module_generate_messages_py.dir/clean:
 
 # All Build rule for target.
 servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/all: servo_module/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/all
+servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/all
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/depend
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=13 "Built target servo_module_generate_messages_nodejs"
@@ -1413,33 +1413,6 @@ geometry_msgs_generate_messages_py: servo_module/CMakeFiles/geometry_msgs_genera
 servo_module/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
 	$(MAKE) -f servo_module/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make servo_module/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 .PHONY : servo_module/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-
-#=============================================================================
-# Target rules for target servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir
-
-# All Build rule for target.
-servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/all:
-	$(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/depend
-	$(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num= "Built target _servo_module_generate_messages_check_deps_servos"
-.PHONY : servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/all
-
-# Build rule for subdir invocation for target.
-servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tndrd/workspaces/kondo/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tndrd/workspaces/kondo/build/CMakeFiles 0
-.PHONY : servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/rule
-
-# Convenience name for target.
-_servo_module_generate_messages_check_deps_servos: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/rule
-
-.PHONY : _servo_module_generate_messages_check_deps_servos
-
-# clean rule for target.
-servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/clean:
-	$(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/clean
-.PHONY : servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/clean
 
 #=============================================================================
 # Target rules for target servo_module/CMakeFiles/moveit_msgs_generate_messages_eus.dir
@@ -1742,8 +1715,8 @@ servo_module/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
 # Target rules for target servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir
 
 # All Build rule for target.
-servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/all
 servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/all: servo_module/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/all
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/depend
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num=9 "Built target servo_module_generate_messages_cpp"
@@ -1990,7 +1963,7 @@ servo_module/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
 # Target rules for target servo_module/CMakeFiles/servo_module_generate_messages_eus.dir
 
 # All Build rule for target.
-servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servos.dir/all
+servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/all: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/all
 servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/all: servo_module/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/depend
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/build
@@ -2013,6 +1986,33 @@ servo_module_generate_messages_eus: servo_module/CMakeFiles/servo_module_generat
 servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/clean:
 	$(MAKE) -f servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/build.make servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/clean
 .PHONY : servo_module/CMakeFiles/servo_module_generate_messages_eus.dir/clean
+
+#=============================================================================
+# Target rules for target servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir
+
+# All Build rule for target.
+servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/all:
+	$(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/depend
+	$(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tndrd/workspaces/kondo/build/CMakeFiles --progress-num= "Built target _servo_module_generate_messages_check_deps_servo_command"
+.PHONY : servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/all
+
+# Build rule for subdir invocation for target.
+servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tndrd/workspaces/kondo/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tndrd/workspaces/kondo/build/CMakeFiles 0
+.PHONY : servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/rule
+
+# Convenience name for target.
+_servo_module_generate_messages_check_deps_servo_command: servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/rule
+
+.PHONY : _servo_module_generate_messages_check_deps_servo_command
+
+# clean rule for target.
+servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/clean:
+	$(MAKE) -f servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/build.make servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/clean
+.PHONY : servo_module/CMakeFiles/_servo_module_generate_messages_check_deps_servo_command.dir/clean
 
 #=============================================================================
 # Target rules for target servo_module/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir
