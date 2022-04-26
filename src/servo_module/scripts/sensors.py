@@ -1,14 +1,19 @@
 import rospy
 import rosservice
+import message_filters as mf
 from webots_ros.srv  import set_int
 from webots_ros.msg  import Float64Stamped
 from sensor_msgs.msg import JointState
 
 ROBOT_NAME = "beep_beep"
 SAMPLING_PERIOD = 32
-JOINT_STATE_TOPIC = "/" + ROBOT_NAME + "/joint_state"
+JOINT_STATE_TOPIC = "/joint_state"
 
 #TODO add opportunity to add sensors manually without parsing service list 
+
+def psensor2joint(psensor):
+	return "_".join(psensor.split("/")[2].split("_")[:-1])
+
 def getSensors():
 	srv_list = rosservice.get_service_list()
 	psensor_set = set()
@@ -29,43 +34,50 @@ def getSensors():
 	## HARDCODED
 	psensor_set.remove("/" + ROBOT_NAME + "/battery_sensor")
 	
-	return psensor_set, imu_set
+	psensors = list(psensor_set)
+	imus     = list(imu_set)
+	
+	return psensors, imus
 
 
 def startSensors(sensors):
-	psensor_set, imu_set = sensors	
-	for sensor in (psensor_set | imu_set):
+	psensors, imus = sensors	
+	for sensor in (psensors + imus):
 		enable_sensor = rospy.ServiceProxy(sensor + "/enable", set_int)
 		res = enable_sensor(SAMPLING_PERIOD)
 		if not res.success: 
 			print("Error: failed to start sensor", sensor)
 
 
-class PositionSensor():
+def publishJointState(psensors):
 	
-	def __init__(self, psensor_name):
-		self.position = -1
-		self.header = None
+	joints = list(map(psensor2joint, psensors))
+	
+	subscribers = [mf.Subscriber(psensor + "/value", Float64Stamped) for psensor in psensors]
+	js_publisher = rospy.Publisher(JOINT_STATE_TOPIC, JointState, queue_size = 10)
+	
+	## Needs to be tweaked
+	queue_size = 10
+	fps = 100.
+	delay = 1 / fps * 0.5
+	
+	def joints_callback(*msgs):
+
+		js = JointState()
+		time = rospy.Time.now()
 		
-		self.input_topic  = psensor_name + "/value"
-		
-		self.sub = rospy.Subscriber(self.input_topic, Float64Stamped, self.input_callback)
-		rospy.wait_for_message(self.input_topic, Float64Stamped)
-		
-		self.joint_name   = "_".join(psensor_name.split("/")[2].split("_")[:-1])
-		self.pub = rospy.Publisher(JOINT_STATE_TOPIC, JointState, queue_size=10)	
-		rospy.Timer(rospy.Duration(SAMPLING_PERIOD / 1000), self.output_callback)
-		
-	def input_callback(self, msg):
-		self.header   = msg.header
-		self.position = msg.data
-		
-	def output_callback(self, event=None):
-		msg = JointState()
-		msg.header = self.header
-		msg.name = [self.joint_name]
-		msg.position = [self.position]
-		self.pub.publish(msg)
+		js.header.stamp.secs  = time.secs
+		js.header.stamp.nsecs = time.nsecs
+
+		for msg, joint in zip(msgs, joints):
+			js.name.append(joint)
+			js.position.append(msg.data)
+
+		js_publisher.publish(js)
+	
+	mfilter = mf.ApproximateTimeSynchronizer(subscribers, queue_size, delay)
+	mfilter.registerCallback(joints_callback)
+	
 
 
 if __name__ == "__main__":
@@ -75,10 +87,9 @@ if __name__ == "__main__":
 	sensors = getSensors()
 	startSensors(sensors)
 	
-	psensor_set, imu_set = sensors
+	psensors, imus = sensors
 	
-	for psensor in psensor_set:
-		PositionSensor(psensor)
+	publishJointState(psensors)
 		
 	rospy.spin()
 		
