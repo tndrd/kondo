@@ -473,6 +473,12 @@ gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 //The directory containing a CMake configuration file for kdl_parser.
 kdl_parser_DIR:PATH=/opt/ros/noetic/share/kdl_parser/cmake
 
+//Value Computed by CMake
+kondo_webots_BINARY_DIR:STATIC=/home/tndrd/workspaces/kondo/build/kondo_webots
+
+//Value Computed by CMake
+kondo_webots_SOURCE_DIR:STATIC=/home/tndrd/workspaces/kondo/src/kondo_webots
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/noetic/lib/libmoveit_move_group_capabilities_base.so
 
