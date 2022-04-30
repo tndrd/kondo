@@ -23,7 +23,7 @@ def load_action(action_name):
 def execute_action(servo_pub, action):
     "Executes desired action"
     joints = action["header"]["joints"]
-    keypoints = action["frames"]
+    keypoints = action["keypoints"]
 
     msg = servo_command()
     msg.names = joints
