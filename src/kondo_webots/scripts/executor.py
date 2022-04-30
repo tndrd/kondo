@@ -2,7 +2,7 @@ import os
 
 import json
 import rospy
-from kondo_webots.msg import servo_command 
+from kondo_webots.msg import servo_command
 
 ACTION_PATH = os.path.dirname(__file__) + "/../actions/"
 SAMPLING_PERIOD = 32
@@ -23,7 +23,7 @@ def load_action(action_name):
 def execute_action(servo_pub, action):
     "Executes desired action"
     joints = action["header"]["joints"]
-    frames = action["frames"]
+    keypoints = action["frames"]
 
     msg = servo_command()
     msg.names = joints
@@ -35,16 +35,31 @@ def execute_action(servo_pub, action):
         msg.values = values
         servo_pub.publish(msg)
 
-    def sleep(nframes):
-        for _ in range(nframes):
+    def transfer_keypoint(keypoint, keypoint_next):
+        frames = keypoint_next["frames"]
+
+        slopes = []
+        biases = []
+
+        for pose_start, pose_end in zip(keypoint["values"], keypoint_next["values"]):
+            slopes.append((pose_end - pose_start) / frames)
+            biases.append(pose_start)
+
+        for frame in range(frames):
+            values = [bias + slope*frame for slope, bias in zip(slopes, biases)]
+            send(values)
             rate.sleep()
 
-    for frame in frames[:-1]:
-        values = frame["values"]
-        send(values)
-        sleep(frame["time"])
+    send(keypoints[0]["values"])
 
-    send(frames[-1]["values"])
+    for keypoint, keypoint_next in zip(keypoints[:-1], keypoints[1:]):
+        val1 = keypoint["values"]
+        val2 = keypoint_next["values"]
+        frames = keypoint_next["frames"]
+
+        print(f"Set keypoints {val1} -> {val2} for {joints} in {frames} frames")
+        transfer_keypoint(keypoint, keypoint_next)
+        print("---\n")
 
 if __name__ == "__main__":
     rospy.init_node('executor', anonymous=False)
