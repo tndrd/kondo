@@ -100,3 +100,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/kondo_webots" TYPE PROGRAM FILES "/home/tndrd/workspaces/kondo/build/kondo_webots/catkin_generated/installspace/start_sensors.py")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/kondo_webots" TYPE PROGRAM FILES "/home/tndrd/workspaces/kondo/build/kondo_webots/catkin_generated/installspace/executor.py")
+endif()
+

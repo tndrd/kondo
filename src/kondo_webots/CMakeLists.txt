@@ -41,3 +41,6 @@ catkin_install_python(PROGRAMS scripts/example_servo_publisher.py
 
 catkin_install_python(PROGRAMS scripts/start_sensors.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+catkin_install_python(PROGRAMS scripts/executor.py
+        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
