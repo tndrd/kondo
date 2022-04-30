@@ -22,25 +22,29 @@ def load_action(action_name):
 
 def execute_action(servo_pub, action):
     "Executes desired action"
-    timestep = SAMPLING_PERIOD * action["header"]["framestep"]
     joints = action["header"]["joints"]
     frames = action["frames"]
 
     msg = servo_command()
     msg.names = joints
 
-    rate = rospy.Rate(1000 / (timestep))
+    rate = rospy.Rate(1000 / SAMPLING_PERIOD)
 
-    def send(frame):
-        print(f"Sent {frame} to {joints}")
-        msg.values = frame
+    def send(values):
+        print(f"Sent {values} to {joints}")
+        msg.values = values
         servo_pub.publish(msg)
 
-    for frame in frames[:-1]:
-        send(frame)
-        rate.sleep()
+    def sleep(nframes):
+        for _ in range(nframes):
+            rate.sleep()
 
-    send(frames[-1])
+    for frame in frames[:-1]:
+        values = frame["values"]
+        send(values)
+        sleep(frame["time"])
+
+    send(frames[-1]["values"])
 
 if __name__ == "__main__":
     rospy.init_node('executor', anonymous=False)

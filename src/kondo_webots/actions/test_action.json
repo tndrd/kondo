@@ -1,14 +1,13 @@
 {
 "header":
     {
-    "framestep": 100,
     "joints": ["head_yaw", "left_shoulder_pitch", "right_shoulder_pitch"]
     },
 
 "frames":
     [
-    [1, 1, 1],
-    [0, 0, 0],
-    [-1, -1, -1]
+    {"time":200, "values":[1, 1, 1]},
+    {"time":50, "values":[0, 0, 0]},
+    {"time":50, "values":[-1, -1, -1]}
     ]
 }
