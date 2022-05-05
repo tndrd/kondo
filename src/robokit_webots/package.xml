@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>kondo_webots</name>
+  <name>robokit_webots</name>
   <version>1.0.0</version>
   <description>hz</description>
   <maintainer email="vovalekhterev@gmail.com">tndrd</maintainer>
