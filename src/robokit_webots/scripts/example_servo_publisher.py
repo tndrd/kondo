@@ -1,7 +1,7 @@
 from math import sin
 
 import rospy
-from kondo_webots.msg import servo_command
+from robokit_webots.msg import servo_command
 
 STEP = 3.14 / 6
 

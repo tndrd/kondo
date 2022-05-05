@@ -7,7 +7,7 @@ import rospy
 import rosservice
 
 from webots_ros.srv   import set_float
-from servo_module.msg import servo_command
+from robokit_webots.msg import servo_command
 
 
 ROBOT_NAME = "beep_beep"

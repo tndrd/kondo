@@ -1,2 +1,2 @@
-kondo_webots
+robokit_webots
 -DCATKIN_DEVEL_PREFIX=/home/tndrd/workspaces/kondo/devel -DCMAKE_INSTALL_PREFIX=/home/tndrd/workspaces/kondo/install -G Unix Makefiles

@@ -2,7 +2,7 @@ import os
 
 import json
 import rospy
-from kondo_webots.msg import servo_command
+from robokit_webots.msg import servo_command
 
 ACTION_PATH = os.path.dirname(__file__) + "/../actions/"
 SAMPLING_PERIOD = 32
